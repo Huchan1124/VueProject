@@ -14649,4 +14649,8 @@ fieldset:disabled .btn {
   background-color: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(5px);
 }
+
+.navside__bg {
+  height: 100vh;
+}
 /*# sourceMappingURL=all.css.map */
