@@ -10,8 +10,6 @@ const app = {
     methods: {
         login(){
 
-            const url = `https://vue3-course-api.hexschool.io/v2/admin/signin`;
-
             const { username , password } =  this.loginData;
 
             const obj = {
@@ -20,11 +18,12 @@ const app = {
             };
 
 
-            axios.post(url,obj)
+            axios.post( this.domain.url + "/admin/signin" , obj)
             .then((res) => {
                 console.log(res.data);
 
                 const { token , expired } = res.data;
+
                 // 將 token 存至 cookie
                 document.cookie = `aliciaToken=${token}; expires=${new Date(expired)}`;
 
@@ -35,6 +34,23 @@ const app = {
             })
 
 
+
+        },
+        checkLogin(){
+
+            // 從cookie 取出 token ，存至header
+            const token = document.cookie.replace(/(?:(?:^|.*;\s*)aliciaToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");       
+            axios.defaults.headers.common['Authorization'] = token; 
+            
+
+            axios.post( this.domain.url + "/api/user/check")
+            .then((res) => {
+                console.log(res.data);
+         
+            })
+            .catch((error)=>{
+                console.dir(error);
+            })
 
         },
 
