@@ -27,10 +27,13 @@ const app = {
                 // 將 token 存至 cookie
                 document.cookie = `aliciaToken=${token}; expires=${new Date(expired)}`;
 
+                window.location = "./admin.html";
+
 
             })
             .catch((error)=>{
                 console.dir(error);
+                alert(`${error.data.message}:${error.data.error.message}`);
             })
 
 
@@ -41,7 +44,7 @@ const app = {
             // 從cookie 取出 token ，存至header
             const token = document.cookie.replace(/(?:(?:^|.*;\s*)aliciaToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");       
             axios.defaults.headers.common['Authorization'] = token; 
-            
+
 
             axios.post( this.domain.url + "/api/user/check")
             .then((res) => {
