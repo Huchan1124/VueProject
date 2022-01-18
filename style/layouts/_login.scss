@@ -7,6 +7,11 @@
     background-repeat: no-repeat;
     padding-top: 10%;
 
+    @media (-webkit-min-device-pixel-ratio: 1.5) {
+        padding-top: 5%;
+     }
+
+
  
 
 }
@@ -15,4 +20,11 @@
     padding: 8% 7%;
     background-color: rgba(0, 0, 0, .25);
     backdrop-filter: blur(5px);
+
+    @media (-webkit-min-device-pixel-ratio: 1.5) {
+        transform: scale(.8);
+     }
+
+
+    
 }
