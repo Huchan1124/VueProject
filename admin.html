@@ -14,8 +14,8 @@
 
 <body>
     <div id="app" class="row gx-0">
-        <div class="col-md-2 bg-dark" >
-            <ul class="navside__bg  m-0">
+        <div class="col-md-2 bg-pink" >
+            <ul class="list-unstyled navside__bg  m-0">
                 <li></li>
                 <li></li>
                 <li></li>
@@ -39,7 +39,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="(item,key,index) in products" :key="item.id">
+                      <tr v-for="(item,index) in products" :key="item.id">
                         <th scope="row">{{index+1}}</th>
                         <td> {{item.title}}</td>
                         <td> {{item.category}}</td>
@@ -49,11 +49,11 @@
                             <input v-if=" item.is_enabled" class="form-check-input " type="checkbox" id="flexSwitchCheckChecked" checked>
                             <input v-else class="form-check-input " type="checkbox" id="flexSwitchCheckChecked" >
                         </div></td>
-                        <td> <button @click="tempProduct = item" class="btn btn-primary">查看</button></td> 
+                        <td> <button @click="tempProduct = item" class="btn btn-pink">查看</button></td> 
                       </tr>
                   
                       <tr>
-                        <td scope="row" colspan="7">目前有 {{ products.length }}部影片</td>
+                        <td scope="row" colspan="7">目前有 {{ products.length }} 部影片</td>
                       </tr>
                     </tbody>
                   </table>
@@ -68,13 +68,13 @@
                                   <div class="card-body">
                                     <h5 class="card-title">
                                         {{tempProduct.title}}
-                                      <span class="badge bg-primary ms-2">{{tempProduct.category}}</span>
+                                      <span class="badge bg-pink ms-2">{{tempProduct.category}}</span>
                                     </h5>
                                     <p class="card-text">影片描述： {{tempProduct.description}} </p>
                                     <p class="card-text">影片內容： {{tempProduct.content}} </p>
                                     <div class="d-flex">
                                       <p class="card-text me-2">{{tempProduct.price }}</p>
-                                      <p class="card-text text-secondary"><del>{{tempProduct.origin_price }}</del></p>
+                                      <p class="card-text text-pink"><del>{{tempProduct.origin_price }}</del></p>
                                       {{tempProduct.unit }}  / 元
                                     </div>
                                   </div>
@@ -91,7 +91,7 @@
                               </template>
                             </div>
                          
-                        <p v-else class="text-danger">請點選一部影片查看詳細資訊</p>
+                            <p v-if="tempProduct == '' " class="text-danger">請點選一部影片查看詳細資訊</p>
                       </div>
 
                   </div>

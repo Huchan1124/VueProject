@@ -13,9 +13,7 @@ const app = {
             axios.get( this.domain.url + `/api/${this.domain.path}/admin/products/all`)
             .then((res) => {
                 console.log(res.data.products);
-                this.products = res.data.products;
-                
-         
+                this.products = Object.values(res.data.products);
             })
             .catch((error)=>{
                 console.dir(error);
