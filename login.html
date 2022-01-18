@@ -27,7 +27,7 @@
         </div>
     </nav>
 </header>
-<main class="wrapper__bgImg">
+<main id="app" class="wrapper__bgImg">
     <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-4">
@@ -35,11 +35,11 @@
                     <h2 class="text-light fw-bold mb-3">登入</h2>
                     <div class="mb-3">
                         <label for="email" class="form-label text-light">Email </label>
-                        <input type="email" class="form-control" id="email" placeholder="請輸入信箱">
+                        <input v-model="login.email" type="email" class="form-control" id="email" placeholder="請輸入信箱">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label text-light">密碼</label>
-                        <input type="password" class="form-control" id="password" placeholder="請輸入密碼">
+                        <input v-model="login.password" type="password" class="form-control" id="password" placeholder="請輸入密碼">
                     </div>
                     <div class="mb-3">
                        <a class="text-white " href="">忘記密碼?</a>
@@ -64,9 +64,22 @@
 
 <body>
 
-
-
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js'></script>
+    <script>
+        const data = {
+            login:{
+                email:"",
+                password:""
+            },
+        };
+
+    </script>
+
+    <script type="module" src="./js/login.js">
+
+
+    </script>
 </body>
 
 </html>
