@@ -854,7 +854,7 @@ $input-bg:                             $gray-900 !default;  //$body-bg !default
 $input-disabled-bg:                     $gray-200 !default;
 $input-disabled-border-color:           null !default;
 
-$input-color:                           $body-color !default;
+$input-color:                           #fff !default; // $body-color
 $input-border-color:                    $gray-900 !default; //   $gray-400 !default;
 $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      $box-shadow-inset !default;
@@ -898,7 +898,7 @@ $form-check-transition:                   null !default;
 
 $form-check-input-active-filter:          brightness(90%) !default;
 
-$form-check-input-bg:                     $input-bg !default;
+$form-check-input-bg:                     #fff !default; //$input-bg !default;
 $form-check-input-border:                 1px solid rgba($black, .25) !default;
 $form-check-input-border-radius:          .25em !default;
 $form-check-radio-border-radius:          50% !default;

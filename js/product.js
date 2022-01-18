@@ -9,40 +9,21 @@ const app = {
         }
     },
     methods: {
-        login(){
-
-            const { username , password } =  this.loginData;
-
-            const obj = {
-                username,
-                password
-            };
-
-
-            axios.post( this.domain.url + "/admin/signin" , obj)
+        getProducts(){
+            axios.get( this.domain.url + `/api/${this.domain.path}/admin/products/all`)
             .then((res) => {
-                console.log(res.data);
-
-                const { token , expired } = res.data;
-
-                // 將 token 存至 cookie
-                document.cookie = `aliciaToken=${token}; expires=${new Date(expired)}`;
-
-                window.location = "./admin.html";
-
-
+                console.log(res.data.products);
+                this.products = res.data.products;
+                
+         
             })
             .catch((error)=>{
                 console.dir(error);
-                alert(`${error.data.message}:${error.data.error.message}`);
             })
-
-
 
         },
         checkLogin(){
 
-            // 從cookie 取出 token ，存至header
             const token = document.cookie.replace(/(?:(?:^|.*;\s*)aliciaToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");       
             axios.defaults.headers.common['Authorization'] = token; 
 
@@ -54,12 +35,17 @@ const app = {
             })
             .catch((error)=>{
                 console.dir(error);
+                
+                window.location = "./login.html";
             })
 
         },
-
+      
     },
     mounted(){
+
+        this.checkLogin()
+        this.getProducts()
     
 
     },
