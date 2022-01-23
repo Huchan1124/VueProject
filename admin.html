@@ -25,35 +25,38 @@
         </div>
         <div class="col-md-10">
             <div  class="p-3">
+              <div class="text-end pe-5" >
+                <button type="button" class="btn btn-pink">建立新產品資訊</button>
+
+              </div>
                 <table class="table ">
                     <thead>
-                      <tr>
+                      <tr class="text-start">
                         <th scope="col">#</th>
                         <th scope="col">影片名稱</th>
                         <th scope="col">類型</th>
                         <th scope="col">原價</th>
                         <th scope="col">定價</th>
-                        <th scope="col">上架</th> 
-                        <th scope="col">編輯</th> 
-                        <th scope="col">查看細節</th>
-                        <th scope="col"></th> 
+                        <th scope="col"  width="146" >上架</th> 
+                        <th scope="col" width="146" >編輯</th> 
+                        <th scope="col"  width="146" >查看細節</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="(item,index) in products" :key="item.id">
+                      <tr v-for="(item,index) in products" :key="item.id" >
                         <th scope="row">{{index+1}}</th>
                         <td> {{item.title}}</td>
                         <td> {{item.category}}</td>
                         <td>{{item.origin_price}}</td>
                         <td>{{item.price}}</td>
-                        <td><div class="form-check form-switch">
+                        <td ><div class="form-check form-switch ">
                             <input v-if=" item.is_enabled" class="form-check-input " type="checkbox" id="flexSwitchCheckChecked" checked>
                             <input v-else class="form-check-input " type="checkbox" id="flexSwitchCheckChecked" >
                         </div></td>
                         <td>
                           <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success">編輯</button>
-                            <button type="button" class="btn btn-danger">刪除</button>
+                            <button type="button" class="btn btn-outline-success">編輯</button>
+                            <button type="button" class="btn btn-outline-danger">刪除</button>
                           </div>
                         </td>
                         <td> <button @click="tempProduct = item" class="btn btn-pink">查看</button></td> 
