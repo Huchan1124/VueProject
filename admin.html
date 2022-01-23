@@ -34,6 +34,7 @@
                         <th scope="col">原價</th>
                         <th scope="col">定價</th>
                         <th scope="col">上架</th> 
+                        <th scope="col">編輯</th> 
                         <th scope="col">查看細節</th>
                         <th scope="col"></th> 
                       </tr>
@@ -49,6 +50,12 @@
                             <input v-if=" item.is_enabled" class="form-check-input " type="checkbox" id="flexSwitchCheckChecked" checked>
                             <input v-else class="form-check-input " type="checkbox" id="flexSwitchCheckChecked" >
                         </div></td>
+                        <td>
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-success">編輯</button>
+                            <button type="button" class="btn btn-danger">刪除</button>
+                          </div>
+                        </td>
                         <td> <button @click="tempProduct = item" class="btn btn-pink">查看</button></td> 
                       </tr>
                   
