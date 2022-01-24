@@ -49,6 +49,7 @@ const app = {
             })
         },
         removeProduct(id){
+
             axios.delete(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
             .then((res)=>{
                 console.log(res.data)
@@ -60,6 +61,7 @@ const app = {
 
         },
         updateProduct(id){
+            
             axios.put( this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
             .then((res)=>{
                 console.log(res.data)
