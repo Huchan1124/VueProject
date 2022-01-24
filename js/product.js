@@ -40,11 +40,24 @@ const app = {
             .then((res)=>{
               console.log(res.data)
 
+              this.getProducts();
+
             })
             .catch((error)=>{
                 console.dir(error)
 
             })
+        },
+        removeProduct(id){
+            axios.delete(this.domain.url + `/api/${this.domain.path}/admin/order/${id}`)
+            .then((res)=>{
+                console.log(res.data)
+                this.getProducts()
+            })
+            .catch((error)=>{
+                console.dir(error)
+            })
+
         },
         checkLogin(){
 
