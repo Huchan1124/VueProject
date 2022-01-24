@@ -8,6 +8,21 @@ const data = {
         password:""
     },
     tempProduct:"",
+    addProductData:{
+        category: "",
+        content: "",
+        description: "",
+        id: "",
+        is_enabled: 1,
+        num: 1,
+        origin_price: 0,
+        price: 0,
+        title: "",
+        unit: "",
+        imageUrl: "",
+        imagesUrl: []
+    },
+
     products:[
 
     ],

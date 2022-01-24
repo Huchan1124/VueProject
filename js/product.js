@@ -21,6 +21,30 @@ const app = {
         },
         addProduct(){
 
+            const obj = {
+                "data": {
+                    "title": this.addProductData.title,
+                    "category": this.addProductData.category,
+                    "origin_price": this.addProductData.origin_price,
+                    "price": this.addProductData.price,
+                    "unit": this.addProductData.unit,
+                    "description": this.addProductData.description,
+                    "content": this.addProductData.content,
+                    "is_enabled": this.addProductData.is_enabled,
+                    "imageUrl": this.addProductData.imageUrl,
+                    "imagesUrl": this.addProductData.imagesUrl,
+                  }
+            };
+
+            axios.post(this.domain.url + `/api/${this.domain.path}/admin/product`, obj)
+            .then((res)=>{
+              console.log(res.data)
+
+            })
+            .catch((error)=>{
+                console.dir(error)
+
+            })
         },
         checkLogin(){
 
