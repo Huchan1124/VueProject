@@ -49,7 +49,7 @@ const app = {
             })
         },
         removeProduct(id){
-            axios.delete(this.domain.url + `/api/${this.domain.path}/admin/order/${id}`)
+            axios.delete(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
             .then((res)=>{
                 console.log(res.data)
                 this.getProducts()
