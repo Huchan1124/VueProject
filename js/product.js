@@ -59,6 +59,17 @@ const app = {
             })
 
         },
+        updateProduct(id){
+            axios.put( this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
+            .then((res)=>{
+                console.log(res.data)
+                this.getProducts()
+            })
+            .catch((error)=>{
+                console.dir(error)
+            })
+
+        },
         checkLogin(){
 
             const token = document.cookie.replace(/(?:(?:^|.*;\s*)aliciaToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");       
