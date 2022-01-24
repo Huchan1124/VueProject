@@ -19,6 +19,9 @@ const app = {
             })
 
         },
+        addProduct(){
+
+        },
         checkLogin(){
 
             const token = document.cookie.replace(/(?:(?:^|.*;\s*)aliciaToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");       
