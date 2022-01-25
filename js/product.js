@@ -42,7 +42,23 @@ const app = {
             axios.post(this.domain.url + `/api/${this.domain.path}/admin/product`, obj)
                 .then((res) => {
                     this.getProducts();
-                    this.closeModal();
+                    this.closeModal("addProductModal");
+
+                    this.addProductData = {
+                        category: "",
+                        content: "",
+                        description: "",
+                        id: "",
+                        is_enabled: 1,
+                        num: 1,
+                        origin_price: 0,
+                        price: 0,
+                        title: "",
+                        unit: "",
+                        imageUrl: "",
+                        imagesUrl: []
+                    };
+
 
                 })
                 .catch((error) => {
@@ -61,10 +77,25 @@ const app = {
         },
         updateProduct(id) {
 
-            axios.put(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
+            const obj = {
+                "data": {
+                    "title": this.tempProduct.title,
+                    "category": this.tempProduct.category,
+                    "origin_price": this.tempProduct.origin_price,
+                    "price": this.tempProduct.price,
+                    "unit": this.tempProduct.unit,
+                    "description": this.tempProduct.description,
+                    "content": this.tempProduct.content,
+                    "is_enabled": this.tempProduct.is_enabled,
+                    "imageUrl": this.tempProduct.imageUrl,
+                    "imagesUrl": this.tempProduct.imagesUrl,
+                }
+            };
+
+            axios.put(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`,obj)
                 .then((res) => {
                     this.getProducts();
-                    this.closeModal();
+                    this.closeModal("updateProductModal");
                 })
                 .catch((error) => {
                 })
