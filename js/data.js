@@ -7,10 +7,10 @@ const data = {
         username:"",
         password:""
     },
-    tempProduct:"",
-    //  tempProduct:{
-    //      imagesUrl:[],
-    //  },
+    // tempProduct:"",
+     tempProduct:{
+         imagesUrl:[],
+     },
     addProductData:{
         category: "",
         content: "",
