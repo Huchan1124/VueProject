@@ -42,6 +42,8 @@ const app = {
 
               this.getProducts();
 
+              addProductModal.hide();
+
             })
             .catch((error)=>{
                 console.dir(error)
@@ -87,12 +89,18 @@ const app = {
             })
 
         },
+        openModal(modalName){
+            this.modalName.show();
+        }
       
     },
     mounted(){
 
         this.checkLogin()
         this.getProducts()
+
+        const addProductModal = new bootstrap.Modal(document.getElementById('addProductModal'));
+        const updateProductModal = new bootstrap.Modal(document.getElementById('updateProductModal'));
     
 
     },
