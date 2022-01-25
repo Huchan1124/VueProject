@@ -8,6 +8,9 @@ const data = {
         password:""
     },
     tempProduct:"",
+    //  tempProduct:{
+    //      imagesUrl:[],
+    //  },
     addProductData:{
         category: "",
         content: "",
