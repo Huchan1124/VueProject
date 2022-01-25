@@ -25,7 +25,7 @@
     <div class="col-md-10">
       <div class="p-3">
         <div class="text-end pe-5">
-          <button type="button" class="btn btn-pink"   @click="openModal(addProductModal)" >建立新產品資訊</button>
+          <button type="button" class="btn btn-pink"   @click="openModal('addProductModal')" >建立新產品資訊</button>
 
         </div>
         <table class="table ">
@@ -59,7 +59,7 @@
               </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic addProduct">
-                  <button type="button" class="btn btn-outline-success" @click="openModal(updateProductModal)">編輯</button>
+                  <button type="button" class="btn btn-outline-success" @click="tempProduct = item;openModal('updateProductModal');">編輯</button>
                   <button type="button" class="btn btn-outline-danger" @click="removeProduct(item.id)">刪除</button>
                 </div>
               </td>
@@ -221,7 +221,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">關閉</button>
+            <button type="button" class="btn btn-outline-secondary" @click="closeModal('addProductModal')">關閉</button>
             <button type="button" class="btn btn-pink" @click="addProduct">上傳</button>
           </div>
         </div>
@@ -305,8 +305,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">關閉</button>
-            <button type="button" class="btn btn-pink" @click="addProduct(tempProduct.id)">儲存變更</button>
+            <button type="button" class="btn btn-outline-secondary"  @click="closeModal('updateProductModal')" >關閉</button>
+            <button type="button" class="btn btn-pink" @click=" updateProduct(tempProduct.id)">儲存變更</button>
           </div>
         </div>
       </div>
