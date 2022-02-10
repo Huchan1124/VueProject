@@ -151,28 +151,12 @@ const app = createApp({
     })
 
 
-app.component('card', {
-        data(){
-            return {}
-        },
-        template:`<div>我是卡片</div>`,
-    }
-    )
 
 app.component('addproductmodal', {
         data(){
             return {
 
-                title: this.msg.title,
-                category: this.msg.category,
-                origin_price: this.msg.origin_price,
-                price:this.msg.price,
-                unit: this.msg.unit,
-                description: this.msg.description,
-                content: this.msg.content,
-                is_enabled: this.msg.is_enabled,
-                imageUrl: this.msg.imageUrl,
-                imagesUrl: this.msg.imagesUrl,
+              
 
                 addProductModal:"addProductModal",
 
@@ -182,7 +166,7 @@ app.component('addproductmodal', {
         props:['msg'],
         methods:{
             push(){
-                this.$emit('pushData',this.title,this.category,this.origin_price,this.price,this.unit,this.description,this.content,this.is_enabled,this.imageUrl,this.imagesUrl)
+                this.$emit('pushData',this.msg.title,this.msg.category,this.msg.origin_price,this.msg.price,this.msg.unit,this.msg.description,this.msg.content,this.msg.is_enabled,this.msg.imageUrl,thismsg.imagesUrl)
             },
             close(){
               this.$emit('closeModal', this.addProductModal)
