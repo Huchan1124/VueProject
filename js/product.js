@@ -5,141 +5,149 @@ let addProductModal = '';
 let updateProductModal = '';
 
 const app = createApp({
-    data() {
-        return {
-            ...data,
+  data() {
+    return {
+      ...data,
 
-        }
+    }
+  },
+  methods: {
+    getProducts() {
+      axios.get(this.domain.url + `/api/${this.domain.path}/admin/products/all`)
+        .then((res) => {
+          this.products = Object.values(res.data.products);
+        })
+        .catch((error) => {
+
+        })
+
     },
-    methods: {
-        getProducts() {
-            axios.get(this.domain.url + `/api/${this.domain.path}/admin/products/all`)
-                .then((res) => {
-                    this.products = Object.values(res.data.products);
-                })
-                .catch((error) => {
-
-                })
-
-        },
-        addProduct( title,category,origin_price,price,unit,description,content,is_enabled,imageUrl,imagesUrl) {
+    addProduct(title, category, origin_price, price, unit, description, content, is_enabled, imageUrl, imagesUrl) {
 
 
-            const obj = {
-                "data": {
-                    "title": title,
-                    "category": category,
-                    "origin_price": origin_price,
-                    "price": price,
-                    "unit": unit,
-                    "description": description,
-                    "content": content,
-                    "is_enabled": is_enabled,
-                    "imageUrl": imageUrl,
-                    "imagesUrl": imagesUrl,
-                }
-            };
-
-            axios.post(this.domain.url + `/api/${this.domain.path}/admin/product`, obj)
-                .then((res) => {
-                    this.getProducts();
-                    this.closeModal("addProductModal");
-
-                    this.addProductData = {
-                        category: "",
-                        content: "",
-                        description: "",
-                        id: "",
-                        is_enabled: 1,
-                        num: 1,
-                        origin_price: 0,
-                        price: 0,
-                        title: "",
-                        unit: "",
-                        imageUrl: "",
-                        imagesUrl: []
-                    };
-
-
-                })
-                .catch((error) => {
-                })
-        },
-        removeProduct(id) {
-
-            axios.delete(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
-                .then((res) => {
-                    this.getProducts();
-                 
-                })
-                .catch((error) => {
-                })
-
-        },
-        updateProduct(id) {
-
-            const obj = {
-                "data": {
-                    "title": this.tempProduct.title,
-                    "category": this.tempProduct.category,
-                    "origin_price": this.tempProduct.origin_price,
-                    "price": this.tempProduct.price,
-                    "unit": this.tempProduct.unit,
-                    "description": this.tempProduct.description,
-                    "content": this.tempProduct.content,
-                    "is_enabled": this.tempProduct.is_enabled,
-                    "imageUrl": this.tempProduct.imageUrl,
-                    "imagesUrl": this.tempProduct.imagesUrl,
-                }
-            };
-
-            axios.put(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`,obj)
-                .then((res) => {
-                    this.getProducts();
-                    this.closeModal("updateProductModal");
-                })
-                .catch((error) => {
-                })
-
-        },
-        checkLogin() {
-
-            const token = document.cookie.replace(/(?:(?:^|.*;\s*)aliciaToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            axios.defaults.headers.common['Authorization'] = token;
-
-
-            axios.post(this.domain.url + "/api/user/check")
-                .then((res) => {
-
-                })
-                .catch((error) => {
-                    window.location = "./login.html";
-                })
-
-        },
-        openModal(modelName) {
-            if (modelName === "addProductModal") {
-                addProductModal.show();
-            };
-
-            if (modelName === "updateProductModal") {
-                updateProductModal.show();
-            }
-
-        },
-        closeModal(modelName) {
-            if (modelName === "addProductModal") {
-                addProductModal.hide();
-            };
-
-            if (modelName === "updateProductModal") {
-                updateProductModal.hide();
-            };
-
-
+      const obj = {
+        "data": {
+          "title": title,
+          "category": category,
+          "origin_price": origin_price,
+          "price": price,
+          "unit": unit,
+          "description": description,
+          "content": content,
+          "is_enabled": is_enabled,
+          "imageUrl": imageUrl,
+          "imagesUrl": imagesUrl,
         }
+      };
+
+      axios.post(this.domain.url + `/api/${this.domain.path}/admin/product`, obj)
+        .then((res) => {
+          this.getProducts();
+          this.closeModal("addProductModal");
+
+          this.addProductData = {
+            category: "",
+            content: "",
+            description: "",
+            id: "",
+            is_enabled: 1,
+            num: 1,
+            origin_price: 0,
+            price: 0,
+            title: "",
+            unit: "",
+            imageUrl: "",
+            imagesUrl: []
+          };
+
+
+        })
+        .catch((error) => {
+        })
     },
-    mounted() {
+    removeProduct(id) {
+
+
+      confirm('確定要刪除嗎？');
+
+      
+      if (true) {
+         axios.delete(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
+          .then((res) => {
+              this.getProducts();
+
+          })
+          .catch((error) => {
+          })
+      } 
+
+    
+
+    },
+    updateProduct(id) {
+
+      const obj = {
+        "data": {
+          "title": this.tempProduct.title,
+          "category": this.tempProduct.category,
+          "origin_price": this.tempProduct.origin_price,
+          "price": this.tempProduct.price,
+          "unit": this.tempProduct.unit,
+          "description": this.tempProduct.description,
+          "content": this.tempProduct.content,
+          "is_enabled": this.tempProduct.is_enabled,
+          "imageUrl": this.tempProduct.imageUrl,
+          "imagesUrl": this.tempProduct.imagesUrl,
+        }
+      };
+
+      axios.put(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`, obj)
+        .then((res) => {
+          this.getProducts();
+          this.closeModal("updateProductModal");
+        })
+        .catch((error) => {
+        })
+
+    },
+    checkLogin() {
+
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)aliciaToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      axios.defaults.headers.common['Authorization'] = token;
+
+
+      axios.post(this.domain.url + "/api/user/check")
+        .then((res) => {
+
+        })
+        .catch((error) => {
+          window.location = "./login.html";
+        })
+
+    },
+    openModal(modelName) {
+      if (modelName === "addProductModal") {
+        addProductModal.show();
+      };
+
+      if (modelName === "updateProductModal") {
+        updateProductModal.show();
+      }
+
+    },
+    closeModal(modelName) {
+      if (modelName === "addProductModal") {
+        addProductModal.hide();
+      };
+
+      if (modelName === "updateProductModal") {
+        updateProductModal.hide();
+      };
+
+
+    }
+  },
+  mounted() {
 
     this.checkLogin()
     this.getProducts()
@@ -147,34 +155,34 @@ const app = createApp({
     addProductModal = new bootstrap.Modal(document.querySelector("#addProductModal"));
     updateProductModal = new bootstrap.Modal(document.querySelector("#updateProductModal"));
 
-    },
-    })
+  },
+})
 
 
 
 app.component('addproductmodal', {
-        data(){
-            return {
+  data() {
+    return {
 
-              
 
-                addProductModal:"addProductModal",
 
-           
-            }
-        },
-        props:['msg'],
-        methods:{
-            push(){
-                this.$emit('pushData',this.msg.title,this.msg.category,this.msg.origin_price,this.msg.price,this.msg.unit,this.msg.description,this.msg.content,this.msg.is_enabled,this.msg.imageUrl,thismsg.imagesUrl)
-            },
-            close(){
-              this.$emit('closeModal', this.addProductModal)
+      addProductModal: "addProductModal",
 
-            },
 
-        },
-        template:`      <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+    }
+  },
+  props: ['msg'],
+  methods: {
+    push() {
+      this.$emit('pushData', this.msg.title, this.msg.category, this.msg.origin_price, this.msg.price, this.msg.unit, this.msg.description, this.msg.content, this.msg.is_enabled, this.msg.imageUrl, this.msg.imagesUrl)
+    },
+    close() {
+      this.$emit('closeModal', this.addProductModal)
+
+    },
+
+  },
+  template: `      <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
         aria-hidden="true">
         <div class="modal-dialog  modal-dialog-scrollable">
           <div class="modal-content">
@@ -287,33 +295,33 @@ app.component('addproductmodal', {
         </div>
       </div>
     `,
-    }
-    )
+}
+)
 
 app.component('updateproductmodal', {
-        data(){
-            return {
-       
+  data() {
+    return {
 
-         
 
-              updateProductModal:"updateProductModal",
 
-           
-            }
-        },
-        props:['msg'],
-        methods:{
-            push(){
-                this.$emit('pushData', this.msg.id)
-            },
-            close(){
-              this.$emit('closeModal', this.updateProductModal)
 
-            },
+      updateProductModal: "updateProductModal",
 
-        },
-        template:`   <div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel"
+
+    }
+  },
+  props: ['msg'],
+  methods: {
+    push() {
+      this.$emit('pushData', this.msg.id)
+    },
+    close() {
+      this.$emit('closeModal', this.updateProductModal)
+
+    },
+
+  },
+  template: `   <div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel"
         aria-hidden="true">
         <div class="modal-dialog  modal-dialog-scrollable">
           <div class="modal-content">
@@ -396,15 +404,15 @@ app.component('updateproductmodal', {
         </div>
       </div>
     `,
-    }
-    )
+}
+)
 
-app.component('pagination',{
-  data(){
+app.component('pagination', {
+  data() {
     return {}
   },
 
-  template:`<nav aria-label="Page navigation example">
+  template: `<nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
@@ -422,5 +430,5 @@ app.component('pagination',{
   </ul>
 </nav>`,
 })
-    
+
 app.mount("#app");
