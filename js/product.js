@@ -67,11 +67,9 @@ const app = createApp({
     },
     removeProduct(id) {
 
+git
 
-      confirm('確定要刪除嗎？');
-
-      
-      if (true) {
+      if (confirm('確定要刪除嗎？')) {
          axios.delete(this.domain.url + `/api/${this.domain.path}/admin/product/${id}`)
           .then((res) => {
               this.getProducts();
